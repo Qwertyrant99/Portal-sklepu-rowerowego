@@ -1,0 +1,59 @@
+CREATE DATABASE L10_Kirichenko_50412_kol;
+
+CREATE TABLE l10_kirichenko_50412_kol.Towar(
+    towar_id integer not null auto_increment unique,
+    towar_nazwa varchar(70),
+    towar_cena double(7,2),
+    primary key (towar_id)
+    );
+INSERT INTO l10_kirichenko_50412_kol.towar(
+    towar_id
+    , towar_nazwa
+    , towar_cena
+    )
+    VALUES
+    (1,'SCOTT Aspect 770',2799.00)
+    , (2,'KROSS Hexagon 2.0',1649.00)
+    , (3,'SCOTT Spark 910',24799.00)
+    , (4,'Cube Analog',3999.00)
+    , (5,'SCOTT Scale 940',7999.00);
+
+CREATE TABLE l10_kirichenko_50412_kol.Klient(
+    klient_id integer not null auto_increment,
+    klient_login varchar(70) not null,
+    klient_name varchar(70) not null,
+    primary key (klient_id)
+    );
+INSERT INTO l10_kirichenko_50412_kol.Klient(
+    klient_id
+    , klient_login
+    , klient_password
+    , klient_name
+    )
+    VALUES
+    (1,'maksym','Maksym')
+    , (2,'ania','Ania')
+    , (3,'jakub','Jakub')
+    , (4,'tomek','Tomasz')
+    , (5,'wera','Weronika');
+
+CREATE TABLE l10_kirichenko_50412_kol.Orders(
+    order_id integer not null auto_increment unique,
+    klient_id integer,
+    towar_id integer,
+    quantity integer,
+    price double(7,2),
+    primary key (order_id)
+    );
+    alter table l10_kirichenko_50412_kol.Orders add constraint klient_id foreign key (klient_id) references l10_kirichenko_50412_kol.klient (klient_id);
+    alter table l10_kirichenko_50412_kol.Orders add constraint towar_id foreign key (towar_id) references l10_kirichenko_50412_kol.towar (towar_id);
+INSERT INTO l10_kirichenko_50412_kol.Orders(
+    order_id
+    , klient_id
+    , towar_id
+    , quantity
+    , price)
+    VALUES
+    (1,2,2,1,1649.00)
+    , (2,3,4,1,3999.00)
+    , (3,5,5,1,7999.00);

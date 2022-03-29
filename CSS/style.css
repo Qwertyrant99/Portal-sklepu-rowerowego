@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+table, td, th{
+    border:1px solid;
+    margin:2px;
+    padding:2px;
+    margin-left:auto;
+    margin-right: auto;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    margin: 0 0 10px 0;
+    padding: 0;
+    display: inline;
+}
+header, footer{
+    margin:20px;
+}
+footer{
+    font-style: italic;
+}
